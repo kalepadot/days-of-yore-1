@@ -14,23 +14,26 @@ function EditMemoryForm (props) {
       back: event.target.back.value,
       image: event.target.image.value
     }
-    return firestore.update({collection: 'memories', doc: memory.id}, propertiesToUpdate)
+    return firestore.update({collection: 'memories', doc: memory.id}, propertiesToUpdate);
   }
-  console.log("MEMORY props", memory);
+  console.log("MEMORY.id props", memory.id);
 
   return (
     <React.Fragment>
-      <form onSubmit={() => handleEditMemoryFormSubmission()}> 
+      <form onSubmit={handleEditMemoryFormSubmission}> 
         <input
           type='text'
+          name='front'
           defaultValue = {memory.front}
           placeholder='memory subject' /><br />
         <textarea
           type='text'
+          name= 'back'
           defaultValue={memory.back}
           placeholder='memory content' /><br />
         <input
           type='text'
+          name='image'
           defaultValue={memory.image}
           placeholder='word to describe image' /><br />
         <button type="submit">Update memory</button>
