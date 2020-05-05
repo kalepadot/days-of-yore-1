@@ -16,7 +16,6 @@ function EditMemoryForm (props) {
     }
     return firestore.update({collection: 'memories', doc: memory.id}, propertiesToUpdate);
   }
-  console.log("MEMORY.id props", memory.id);
 
   return (
     <React.Fragment>

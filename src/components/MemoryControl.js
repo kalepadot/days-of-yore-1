@@ -38,7 +38,7 @@ class MemoryControl extends React.Component {
 
   handleFlippingCard = (id) => {
     if (this.state.flippedOver.includes(id)) {
-      const newFlippedOver = this.state.flippedOver.filter(x => x !== id);
+      const newFlippedOver = this.state.flippedOver.filter((x) => x !== id);
       this.setState({flippedOver: newFlippedOver});
     } else {
       this.state.flippedOver.push(id);

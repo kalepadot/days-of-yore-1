@@ -8,6 +8,7 @@ function MemoryList(props) {
   useFirestoreConnect([
     { collection: 'memories' }
   ]);
+  console.log("FLIPPEDOVER:::", props.flippedOver);
 const memories = useSelector(state => state.firestore.ordered.memories);
 if (isLoaded(memories)) {
   return (
@@ -17,7 +18,7 @@ if (isLoaded(memories)) {
           return <Memory 
           onClickingDelete={props.onClickingDelete}
           onClickingEdit={props.onClickingEdit}
-          whenMemoryClicked={ props.onMemorySelection }
+          whenMemoryClicked={props.onMemorySelection}
           content={props.flippedOver.includes(memory.id) ? memory.back : memory.front}
           date={memory.date}
           image={memory.image}
