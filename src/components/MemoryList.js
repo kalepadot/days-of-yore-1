@@ -37,7 +37,7 @@ if (isLoaded(memories)) {
 } else{
   return (
     <React.Fragment>
-    <h3>Loading...</h3>
+      <h3>Loading...</h3>
     </React.Fragment>
     )
   }
