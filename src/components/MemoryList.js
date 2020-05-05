@@ -15,20 +15,21 @@ if (isLoaded(memories)) {
       <hr/>
       {memories.map((memory) => {
           return <Memory 
+          onClickingDelete={props.onClickingDelete}
+          onClickingEdit={props.onClickingEdit}
           whenMemoryClicked={ props.onMemorySelection(memory.id) }
           content={props.flippedOver.includes(memory.id) ? memory.back : memory.front}
           date={memory.date}
           image={memory.image}
           id={memory.id}
           key={memory.id} />
-     
       })}
     </React.Fragment>
   );
 } else{
   return (
     <React.Fragment>
-      <h3>Loading...</h3>
+      <h3>Remembering...</h3>
     </React.Fragment>
     )
   }

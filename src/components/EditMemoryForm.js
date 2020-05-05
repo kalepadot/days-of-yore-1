@@ -19,27 +19,28 @@ function EditMemoryForm (props) {
 
   return (
     <React.Fragment>
-      <form onSubmit={() => handleEditMemoryFormSubmission(event)}> 
+      <form onSubmit={() => handleEditMemoryFormSubmission()}> 
         <input
           type='text'
           defaultValue = {memory.front}
-          placeholder='memory subject' />
+          placeholder='memory subject' /><br />
         <textarea
           type='text'
           defaultValue={memory.back}
-          placeholder='memory content' />
+          placeholder='memory content' /><br />
         <input
           type='text'
           defaultValue={memory.image}
-          placeholder='word to describe image' />
+          placeholder='word to describe image' /><br />
+        <button type="submit">Update memory</button>
       </form>
     </React.Fragment>
   );
 }
 
 EditMemoryForm.propTypes = {
-  onEdit: PropTypes.function,
-  memory: PropTypes.obj
+  onEdit: PropTypes.func,
+  memory: PropTypes.object
 }
 
 export default EditMemoryForm;

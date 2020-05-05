@@ -11,8 +11,8 @@ class MemoryControl extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      flippedOver = [],
-      selectedMemory = null,
+      flippedOver: [],
+      selectedMemory: null,
       editing: false
     };
   }
@@ -50,8 +50,11 @@ class MemoryControl extends React.Component {
     this.setState({selectedMemory: null});
   }
 
-  handleEditClick = () => {
-    this.setState({editing: true});
+  handleEditClick = (memory) => {
+    this.setState({
+      editing: true,
+      selectedMemory: memory
+    });
   }
 
   handleEditingMemoryInList = () => {
@@ -72,7 +75,7 @@ class MemoryControl extends React.Component {
       currentlyVisibleState = <MemoryForm onMemoryCreation={this.handleAddingNewMemoryToList} />;
       buttonText = "Return to memory list";
     } else {
-      currentlyVisibleState = <MemoryList onMemorySelection={this.handleFlippingCard} flippedOver={this.state.flippedOver} />;
+      currentlyVisibleState = <MemoryList onMemorySelection={this.handleFlippingCard} onClickingDelete={this.handleDeletingMemory} onClickingEdit={this.handleEditClick} flippedOver={this.state.flippedOver} />;
       buttonText = "Add memory";
     }
 

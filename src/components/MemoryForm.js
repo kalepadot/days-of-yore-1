@@ -8,12 +8,17 @@ function MemoryForm(props) {
   function addMemoryToFirestore(event) {
     event.preventDefault();
     props.onMemoryCreation();
+    const today = new Date();
+    const date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+    const time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+    const dateTime = date+' '+time;
+
 
     return firestore.collection('memories').add(
       {
         front: event.target.front.value,
         back: event.target.back.value,
-        date: event.target.date.value,
+        date: dateTime,
         image: event.target.image.value,
       }
     );
@@ -21,20 +26,22 @@ function MemoryForm(props) {
 
   return (
     <React.Fragment>
-      <form onSubmit={() => addMemoryToFirestore(event)}> 
+      <form onSubmit={() => addMemoryToFirestore()}> 
         <input
           type='text'
           name='front'
-          placeholder='memory subject' />
+          placeholder='memory subject' /><br />
         <textarea
           type='text'
           name='back'
-          placeholder='memory content' />
+          placeholder='memory content' /><br />
         <input
           type='text'
           name='image'
-          placeholder='word to describe image' />
+          placeholder='word to describe image' /><br />
+        <button type="submit">Add memory</button>
       </form>
+      
     </React.Fragment>
   );
 }

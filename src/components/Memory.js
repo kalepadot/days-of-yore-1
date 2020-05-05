@@ -8,19 +8,22 @@ function Memory(props){
   return (
     <React.Fragment>
       <div onClick = {() => props.whenMemoryClicked(props.id)}> {/* div triggers MemoryClick */}
-        <img src={imgSource} alt="memory image" />
+        <img src={imgSource} alt="memory vibes" />
         <h3>{props.content}</h3>
         <p>{props.date}</p>
       </div>
-      <button>Delete</button>
-      <button>Edit</button>
+      <button onclick={() => props.onClickingDelete(props.id)}>Delete</button>
+      <button onClick={() => props.onClickingEdit(props)}>Edit</button>
     </React.Fragment>
   );
 }
 
 Memory.propTypes = {
-  front: PropTypes.string,
-  back: PropTypes.string,
-  date: React.PropTypes.instanceOf(Date),
-  image: PropTypes.string
+  content: PropTypes.string,
+  date: PropTypes.string,
+  image: PropTypes.string,
+  onClickingDelete: PropTypes.func,
+  onClickingEdit: PropTypes.func
 }
+
+export default Memory;
