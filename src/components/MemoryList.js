@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import Memory from "./Memory";
 import { useSelector } from 'react-redux';
-import { useFirestoreConnect, isLoaded, isEmpty } from 'react-redux-firebase';
+import { useFirestoreConnect, isLoaded } from 'react-redux-firebase';
 
 function MemoryList(props) {
   useFirestoreConnect([
@@ -17,10 +17,12 @@ if (isLoaded(memories)) {
           return <Memory 
           onClickingDelete={props.onClickingDelete}
           onClickingEdit={props.onClickingEdit}
-          whenMemoryClicked={ props.onMemorySelection(memory.id) }
+          whenMemoryClicked={ props.onMemorySelection }
           content={props.flippedOver.includes(memory.id) ? memory.back : memory.front}
           date={memory.date}
           image={memory.image}
+          front={memory.front}
+          back={memory.back}
           id={memory.id}
           key={memory.id} />
       })}

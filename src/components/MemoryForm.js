@@ -5,14 +5,13 @@ import { useFirestore } from 'react-redux-firebase';
 function MemoryForm(props) {
   const firestore = useFirestore(); // the hook
 
-  function addMemoryToFirestore(event) {
+  const addMemoryToFirestore = (event) => {
     event.preventDefault();
     props.onMemoryCreation();
     const today = new Date();
     const date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
     const time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
     const dateTime = date+' '+time;
-
 
     return firestore.collection('memories').add(
       {
@@ -26,7 +25,7 @@ function MemoryForm(props) {
 
   return (
     <React.Fragment>
-      <form onSubmit={() => addMemoryToFirestore()}> 
+      <form onSubmit={addMemoryToFirestore}> 
         <input
           type='text'
           name='front'
@@ -41,7 +40,6 @@ function MemoryForm(props) {
           placeholder='word to describe image' /><br />
         <button type="submit">Add memory</button>
       </form>
-      
     </React.Fragment>
   );
 }

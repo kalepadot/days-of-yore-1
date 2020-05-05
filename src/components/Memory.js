@@ -5,16 +5,18 @@ function Memory(props){
 
   let imgSource = "http://source.unsplash.com/250x150/?" + props.image;
 
+  console.log("MEMORY.js::::", props);
+
   return (
-    <React.Fragment>
-      <div onClick = {() => props.whenMemoryClicked(props.id)}> {/* div triggers MemoryClick */}
+    <div className="memoryCard">
+      <div className="clickable" onClick = {() => props.whenMemoryClicked(props.id)}>
         <img src={imgSource} alt="memory vibes" />
         <h3>{props.content}</h3>
         <p>{props.date}</p>
       </div>
-      <button onclick={() => props.onClickingDelete(props.id)}>Delete</button>
+      <button onClick={() => props.onClickingDelete(props.id)}>Delete</button>
       <button onClick={() => props.onClickingEdit(props)}>Edit</button>
-    </React.Fragment>
+    </div>
   );
 }
 
@@ -23,7 +25,11 @@ Memory.propTypes = {
   date: PropTypes.string,
   image: PropTypes.string,
   onClickingDelete: PropTypes.func,
-  onClickingEdit: PropTypes.func
+  onClickingEdit: PropTypes.func,
+  whenMemoryClicked: PropTypes.func,
+  id: PropTypes.string,
+  front: PropTypes.string,
+  back: PropTypes.string
 }
 
 export default Memory;
