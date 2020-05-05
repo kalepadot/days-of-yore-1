@@ -14,23 +14,14 @@ if (isLoaded(memories)) {
     <React.Fragment>
       <hr/>
       {memories.map((memory) => {
-        if (props.flippedOver.includes(memory.id)) {
           return <Memory 
           whenMemoryClicked={ props.onMemorySelection(memory.id) }
-          back={memory.back}// back = content
+          content={props.flippedOver.includes(memory.id) ? memory.back : memory.front}
           date={memory.date}
           image={memory.image}
           id={memory.id}
           key={memory.id} />
-        } else {
-          return <Memory
-          whenMemoryClicked= { props.onMemorySelection(memory.id) }
-          front={memory.front}// front = subject
-          date={memory.date}
-          image={memory.image}
-          id={memory.id}
-          key={memory.id} />
-        }
+     
       })}
     </React.Fragment>
   );
