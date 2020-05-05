@@ -31,7 +31,9 @@ class MemoryControl extends React.Component {
   }
 
   handleAddingNewMemoryToList = () => {
-
+    const { dispatch } = this.props;
+    const action = a.toggleForm();
+    dispatch(action);
   }
 
   handleFlippingCard = (id) => {
@@ -44,7 +46,8 @@ class MemoryControl extends React.Component {
   }
 
   handleDeletingMemory = (id) => {
-
+    this.props.firestore.delete({collection: 'memories', doc: id}); 
+    this.setState({selectedMemory: null});
   }
 
   handleEditClick = () => {
@@ -66,7 +69,7 @@ class MemoryControl extends React.Component {
       currentlyVisibleState = <EditMemoryForm memory={this.state.selectedMemory} onEdit={this.handleEditingMemoryInList} />;
       buttonText = "Return to memory list";
     } else if (this.props.formVisibleOnPage) {
-      currentlyVisibleState = <MemoryForm onNewMemoryCreation={this.handleAddingNewMemoryToList} />;
+      currentlyVisibleState = <MemoryForm onMemoryCreation={this.handleAddingNewMemoryToList} />;
       buttonText = "Return to memory list";
     } else {
       currentlyVisibleState = <MemoryList onMemorySelection={this.handleFlippingCard} flippedOver={this.state.flippedOver} />;
