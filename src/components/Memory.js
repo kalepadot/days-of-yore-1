@@ -7,12 +7,14 @@ function Memory(props){
 
   return (
     <React.Fragment>
-      <div onClick = {() => props.whenMemoryClicked(props.id)}>
+      <div onClick = {() => props.whenMemoryClicked(props.id)}> {/* div triggers MemoryClick */}
         <img src={imgSource} alt="memory image" />
         <h3>{props.front}</h3>
         <h3>{props.back}</h3>
         <p>{props.date}</p>
       </div>
+      <button>Delete</button>
+      <button>Edit</button>
     </React.Fragment>
   );
 }
