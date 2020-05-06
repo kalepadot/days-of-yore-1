@@ -7,7 +7,7 @@ function Memory(props){
 
   return (
     <div className="memoryCard">
-      <div className="clickable" onClick = {props.whenMemoryClicked(props.id)}>
+      <div className="clickable" onClick = {() => props.whenMemoryClicked(props.id)}>
         <img src={imgSource} alt="memory vibes" />
         <h3>{props.content}</h3>
         <p>{props.date}</p>
