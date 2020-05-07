@@ -8,7 +8,6 @@ function MemoryList(props) {
   useFirestoreConnect([
     { collection: 'memories' }
   ]);
-  console.log("FLIPPEDOVER:::", props.flippedOver);
 const memories = useSelector(state => state.firestore.ordered.memories);
 if (isLoaded(memories)) {
   return (

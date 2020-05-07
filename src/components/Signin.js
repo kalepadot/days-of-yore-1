@@ -6,7 +6,7 @@ function Signin(){
   function doSignUp(event) {
     event.preventDefault();
     const email = event.target.email.value;
-    const password = event.targer.password.value;
+    const password = event.target.password.value;
     firebase.auth().createUserWithEmailAndPassword(email, password).then(function(){
       console.log("successfully signed UP!");
     }).catch(function(error) {
@@ -14,10 +14,10 @@ function Signin(){
     });
   } 
   
-  function doSignUp(event) {
+  function doSignIn(event) {
     event.preventDefault();
-    const email = event.target.signinEmail.value;
-    const password = event.target.signinPassword.value;
+    const email = event.target.signInEmail.value;
+    const password = event.target.signInPassword.value;
     firebase.auth().signInWithEmailAndPassword(email, password).then(function() {
       console.log("Successfully signed IN!");
     }).catch(function(error) {
