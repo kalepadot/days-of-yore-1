@@ -51,6 +51,10 @@ function Signin(props){
   if ((isLoaded(auth)) && (auth.currentUser == null)) {
     return (
       <div>
+      {/* <div style='
+        display: flex;
+        border: 1px solid rgba(0, 0, 0, 0.3);'
+      > */}
         <h1>If you already have an account, Sign In!</h1>
         <form onSubmit={doSignIn}>
           <input
@@ -59,6 +63,8 @@ function Signin(props){
             placeholder='email' />
           <input
             type='password'
+            // style='border-color: transparent;
+            //       flex: 1;'
             name='signInPassword'
             placeholder='password' />
           <button type='submit'>Sign in</button>
@@ -72,6 +78,8 @@ function Signin(props){
             placeholder='email' />
           <input
             type='password'
+            //  style='border-color: transparent;
+            //       flex: 1;'
             name='password'
             placeholder='password' />
           <button type='submit'>Sign up</button>
