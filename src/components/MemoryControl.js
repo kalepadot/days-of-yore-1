@@ -25,17 +25,11 @@ class MemoryControl extends React.Component {
       });
     } else {
       this.setState({formVisibleOnPage: !this.state.formVisibleOnPage});
-      // const { dispatch } = this.props;
-      // const toggleAction = a.toggleForm();
-      // dispatch(toggleAction);
     }
   }
 
   handleAddingNewMemoryToList = () => {
     this.setState({formVisibleOnPage: false});
-    // const { dispatch } = this.props;
-    // const action = a.toggleForm();
-    // dispatch(action);
   }
 
   handleFlippingCard = (id) => {

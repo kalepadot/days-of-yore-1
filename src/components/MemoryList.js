@@ -13,7 +13,6 @@ const memories = useSelector(state => state.firestore.ordered.memories);
 if (isLoaded(memories)) {
   return (
     <React.Fragment>
-      <hr/>
       {memories.map((memory) => {
           return <Memory 
           onClickingDelete={props.onClickingDelete}

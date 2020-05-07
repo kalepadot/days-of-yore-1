@@ -9,20 +9,18 @@ import rootReducer from './reducers/index';
 import { ReactReduxFirebaseProvider } from 'react-redux-firebase';
 import { createFirestoreInstance } from 'redux-firestore';
 import firebase from "./firebase";
+import 'firebase/auth';
 
 const store = createStore(
   rootReducer, 
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
   );
 
-// store.subscribe(() =>
-//   console.log(store.getState())
-// );
-
-const rrfProps = {
+const rrfProps = {  //react redux firebase = rrf
   firebase,
   config: {
-        userProfile: "users"
+        userProfile: "users",
+        userFirestoreForProfile: true
     },
   dispatch: store.dispatch,
   createFirestoreInstance
