@@ -2,7 +2,6 @@ import React from 'react';
 import MemoryForm from './MemoryForm';
 import MemoryList from './MemoryList';
 import EditMemoryForm from './EditMemoryForm';
-import * as a from './../actions';
 import { connect } from 'react-redux';
 import { withFirestore } from 'react-redux-firebase';
 
@@ -13,7 +12,8 @@ class MemoryControl extends React.Component {
     this.state = {
       flippedOver: [],
       selectedMemory: null,
-      editing: false
+      editing: false,
+      formVisibleOnPage: false
     };
   }
 
@@ -24,16 +24,18 @@ class MemoryControl extends React.Component {
         editing: false
       });
     } else {
-      const { dispatch } = this.props;
-      const toggleAction = a.toggleForm();
-      dispatch(toggleAction);
+      this.setState({formVisibleOnPage: !this.state.formVisibleOnPage});
+      // const { dispatch } = this.props;
+      // const toggleAction = a.toggleForm();
+      // dispatch(toggleAction);
     }
   }
 
   handleAddingNewMemoryToList = () => {
-    const { dispatch } = this.props;
-    const action = a.toggleForm();
-    dispatch(action);
+    this.setState({formVisibleOnPage: false});
+    // const { dispatch } = this.props;
+    // const action = a.toggleForm();
+    // dispatch(action);
   }
 
   handleFlippingCard = (id) => {
@@ -41,7 +43,8 @@ class MemoryControl extends React.Component {
       const newFlippedOver = this.state.flippedOver.filter((x) => x !== id);
       this.setState({flippedOver: newFlippedOver});
     } else {
-      this.state.flippedOver.push(id);
+      const newArray = [...this.state.flippedOver, id];
+      this.setState({flippedOver: newArray});
     }
   }
 
@@ -71,7 +74,7 @@ class MemoryControl extends React.Component {
     if (this.state.editing) {
       currentlyVisibleState = <EditMemoryForm memory={this.state.selectedMemory} onEdit={this.handleEditingMemoryInList} />;
       buttonText = "Return to memory list";
-    } else if (this.props.formVisibleOnPage) {
+    } else if (this.state.formVisibleOnPage) {
       currentlyVisibleState = <MemoryForm onMemoryCreation={this.handleAddingNewMemoryToList} />;
       buttonText = "Return to memory list";
     } else {
@@ -81,8 +84,10 @@ class MemoryControl extends React.Component {
 
     return (
       <React.Fragment>
-        <div className="mainBody">
+        <div>
           {currentlyVisibleState}
+        </div>
+        <div className="mainBody">
           <button onClick={this.handleClick}>{buttonText}</button>
         </div>
       </React.Fragment>

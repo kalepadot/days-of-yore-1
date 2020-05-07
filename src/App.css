@@ -1,10 +1,28 @@
+body, html {
+  min-height: 100%; 
+}
+
 body {
-  background-image: linear-gradient(white, rgb(155, 152, 152));
+  background-image: url(../src/assets/photos.jpg);
+  background-size: cover;
+  color: ivory;
+  /* background: linear-gradient(rgba(#000, .8), rgba(#000, .6)); */
 }
 
 h1 {
   display: flex;
   justify-content: center;
+}
+
+p {
+  display: flex;
+  justify-content: center;
+}
+
+.signin {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 
 input {
@@ -13,15 +31,15 @@ input {
   text-align: center;
   border: 2px solid black;
   font-size: 20px;
-  width: 180%;
+  width: 30%;
 }
 
 button {
-  border: 5px solid black;
+  border: 5px solid gray;
   border-radius: 15px;
   margin: 5px;
-  display: flex;
   text-align: center;
+  background-image: radial-gradient(silver, ivory);
 }
 
 button:hover {
@@ -34,7 +52,7 @@ textarea {
   border-radius: 15px;
   text-align: center;
   font-size: 15px;
-  width: 180%;
+  width: 30%;
 }
 
 form {
@@ -45,7 +63,7 @@ form {
 }
 
 .mainBody {
-  align-items: center;
+  display: flex;
   justify-content: center;
 }
 
@@ -61,9 +79,32 @@ img {
   opacity: .6;
 }
 
+.clickable {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: black;
+}
+
 .memoryCard {
+  display: inline-block;
+  /* justify-content: center; */
+  /* align-items: center; */
   border: 1px solid black;
   border-radius: 15px;
   margin: 5px;
-  display: inline-block;
+  max-width: 250px;
+  background-color: rgba(255, 255, 240, 0.664);
+}
+
+.header a {
+  color: ivory;
+  margin-left: 20px;
+  text-decoration: none;
+}
+
+.header a:hover {
+  cursor: pointer;
+  opacity: .6;
 }
